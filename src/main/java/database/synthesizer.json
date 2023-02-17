@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Name",
+    "productionYear": 1231,
+    "productionCountry": "KZ",
+    "color": "Red",
+    "price": "10.0",
+    "keyMaterial": "test",
+    "recordingCapabilities": "nnn",
+    "connectivityOptions": "nnnn",
+    "keyAmount": 123
+  },
+  {
+    "title": "Name",
+    "productionYear": 1231,
+    "productionCountry": "KZ",
+    "color": "Red",
+    "price": "10.0",
+    "keyMaterial": "test",
+    "recordingCapabilities": "nnn",
+    "connectivityOptions": "nnnn",
+    "keyAmount": 123
+  }
+]

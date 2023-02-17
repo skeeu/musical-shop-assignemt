@@ -1,34 +1,34 @@
 import database.DatabaseHandler;
-import instruments.keyboard.acoustic.dynamic.Celesta;
-import instruments.keyboard.acoustic.dynamic.Clavichord;
-import instruments.keyboard.acoustic.dynamic.Piano;
-import instruments.keyboard.acoustic.statik.reed.Bayan;
-import instruments.keyboard.acoustic.statik.reed.PumpOrgan;
-import instruments.keyboard.acoustic.statik.wind.Organ;
-import instruments.keyboard.digital.electro_mechanic.DigitalPiano;
-import instruments.keyboard.digital.electronic.MidiKeyboard;
-import instruments.keyboard.digital.electronic.Synthesizer;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import org.hibernate.Session;
 import org.json.simple.parser.ParseException;
+import roles.User;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     static Shop shop = new Shop();
     static DatabaseHandler db = new DatabaseHandler();
     public static void main(String[] args) throws IOException, ParseException {
-        Scanner sc = new Scanner(System.in);
-        String username = sc.next();
-        String password = sc.next();
-//        shop.startShop();
+        shop.startShop();
+
+//        Scanner sc = new Scanner(System.in);
+//        String username = sc.next();
+//        String password = sc.next();
+//        Session session = db.getSession().openSession();
+//        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+//        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+//        Root<User> root = criteriaQuery.from(User.class);
+//        System.out.println(root);
+//        criteriaQuery.select(root).where(criteriaBuilder.and(criteriaBuilder.equal(root.get("username"), username), criteriaBuilder.equal(root.get("password"), password)));
+//        List<User> users = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+//
+//        System.out.println(users);
 //        JSONParser jsonParser = new JSONParser();
 //        FileReader reader = new FileReader("src/main/java/organ.json");
 //        JSONObject obj = (JSONObject) jsonParser.parse(reader);

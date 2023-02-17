@@ -19,7 +19,7 @@ public class User {
     private Integer balance;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "roleId")
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public Integer getId() {

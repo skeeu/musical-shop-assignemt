@@ -16,6 +16,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import roles.Role;
+import roles.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +26,7 @@ import java.util.Map;
 
 public class DatabaseHandler {
     private static SessionFactory sessionFactory;
-    private static Map<String, Class> INSTRUMENTS_TYPES = new HashMap<String, Class>();
+    private static final Map<String, Class> INSTRUMENTS_TYPES = new HashMap<String, Class>();
 
     public Map<String, Class> getInstrumentClasses () {
         return INSTRUMENTS_TYPES;
@@ -46,6 +48,9 @@ public class DatabaseHandler {
 
             configuration.addAnnotatedClass(MidiKeyboard.class);
             configuration.addAnnotatedClass(Synthesizer.class);
+
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Role.class);
 
             INSTRUMENTS_TYPES.put(Celesta.class.getSimpleName(), Celesta.class);
             INSTRUMENTS_TYPES.put(Clavichord.class.getSimpleName(), Clavichord.class);
@@ -69,15 +74,7 @@ public class DatabaseHandler {
         return sessionFactory;
     }
 
-    public void save (Instrument instrument) {
-        Session session = getSession().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.persist(instrument);
-        transaction.commit();
-        session.close();
-    }
-
-    public List findIntrumentsByType(String instrumentType) {
+    public List<Instrument> findIntrumentsByType(String instrumentType) {
         Session session = getSession().openSession();
         return session.createQuery("FROM " + instrumentType, INSTRUMENTS_TYPES.get(instrumentType)).list();
     }
@@ -95,13 +92,5 @@ public class DatabaseHandler {
             instruments.addAll(classInstruments);
         }
         return instruments;
-    }
-
-    public void delete(Instrument instrument) {
-        Session session = getSession().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(instrument);
-        transaction.commit();
-        session.close();
     }
 }

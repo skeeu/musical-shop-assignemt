@@ -79,11 +79,6 @@ public class DatabaseHandler {
         return session.createQuery("FROM " + instrumentType, INSTRUMENTS_TYPES.get(instrumentType)).list();
     }
 
-    public Instrument findInstrumentById(int id, String instrumentType) {
-        Session session = getSession().openSession();
-        return (Instrument) session.get(INSTRUMENTS_TYPES.get(instrumentType), id);
-    }
-
     public List<Instrument> findAll() {
         Session session = getSession().openSession();
         List<Instrument> instruments = new ArrayList<>();

@@ -25,7 +25,6 @@ public class PianoBuilder extends KeyboardInstrumentBuilder {
 
     public PianoBuilder withTitle() {
         System.out.println("Enter title: ");
-        System.out.println(123);
         this.title = sc.next();
         return this;
     }
@@ -44,7 +43,6 @@ public class PianoBuilder extends KeyboardInstrumentBuilder {
 
     public PianoBuilder withColor() {
         System.out.println("Enter color: ");
-        System.out.println(12);
         this.color = sc.next();
         return this;
     }

@@ -4,9 +4,7 @@ import database.InstrumentsDB;
 import instruments.Instrument;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
     private final String name;
@@ -15,8 +13,10 @@ public class Menu {
 
     private static final InstrumentsDB db = new InstrumentsDB();
     private static final Map<String, Class> instrumentClasses = InstrumentsDB.instrumentClasses;
-    private List<Instrument> instruments = db.findAll();
-    private int command;
+    private static List<Instrument> instruments = db.findAll();
+    private static int command;
+    private static Integer yearFilter;
+    private static String countryFilter;
 
     public Menu(String name, Scanner sc, List<String> options) {
         this.name = name;
@@ -28,11 +28,27 @@ public class Menu {
         return db.findAll();
     }
 
+    public static String getCountryFilter() {
+        return countryFilter;
+    }
+
+    public static void setCountryFilter(String countryFilter) {
+        Menu.countryFilter = countryFilter;
+    }
+
+    public static Integer getYearFilter() {
+        return yearFilter;
+    }
+
+    public static void setYearFilter(Integer yearFilter) {
+        Menu.yearFilter = yearFilter;
+    }
+
     public InstrumentsDB getDb() {
         return db;
     }
     public void setInstruments(List<Instrument> instruments) {
-        this.instruments = instruments;
+        Menu.instruments = instruments;
     }
 
     public List<Instrument> getInstruments() {
@@ -52,16 +68,10 @@ public class Menu {
         return command;
     }
     public void setCommand(int command) {
-        this.command = command;
+        Menu.command = command;
     }
 
-    private void showOptions() {
-
-    }
     public <T> List<T> chooseOption() {
-        return null;
-    }
-    private <T> List<T> handleOption(){
         return null;
     }
     public String getName() {
@@ -69,14 +79,17 @@ public class Menu {
     };
 
     public void showInstruments() {
+        List<Instrument> instruments = applyFilter("year", getAllInstruments());
+        instruments = applyFilter("country", instruments);
+        setInstruments(instruments);
         if (instruments.size() == 0) {
             System.out.println("Instruments not found");
         } else {
             int currentPage = 0;
-            int pageSize = 5;
-            int totalPages = instruments.size() / pageSize;
+            double pageSize = 5.0;
+            int totalPages = (int) Math.ceil(instruments.size() / pageSize);
             while (true) {
-                paginationPage(pageSize, currentPage, instruments);
+                paginationPage((int) pageSize, currentPage, instruments);
                 System.out.println("\n1. Previous page \t\t\t 2.Next page");
                 System.out.println("0. Leave");
 
@@ -92,6 +105,36 @@ public class Menu {
                 }
             }
         }
+    }
+
+    private List<Instrument> applyFilter(String type, List<Instrument> instruments) {
+        List<Instrument> filtered = new ArrayList<>();
+
+        switch (type) {
+            case "year" -> {
+                if (getYearFilter() != null) {
+                    for(Instrument ins: instruments) {
+                        if(Objects.equals(ins.productionYear, getYearFilter())) {
+                            filtered.add(ins);
+                        }
+                    }
+                } else {
+                    filtered = instruments;
+                }
+            }
+            case "country" -> {
+                if (getCountryFilter() != null) {
+                    for(Instrument ins: instruments) {
+                        if(Objects.equals(ins.productionCountry, getCountryFilter())) {
+                            filtered.add(ins);
+                        }
+                    }
+                } else {
+                    filtered = instruments;
+                }
+            }
+        }
+        return filtered;
     }
 
     private void paginationPage(int pageSize, int currentPage, List<Instrument> arr) {

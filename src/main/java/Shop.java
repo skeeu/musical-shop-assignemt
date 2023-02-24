@@ -8,8 +8,6 @@ public class Shop {
     private static Shop shop = null;
     private static final Scanner sc = new Scanner(System.in);
     private String activeMenu;
-    private Integer yearFilter;
-    private String countryFilter;
     public String selectedType;
     private final Map<String, Menu> menus = new HashMap<String, Menu>();
 
@@ -32,6 +30,7 @@ public class Shop {
 
     public <T> void startShop() {
         while (true) {
+            printFilters();
             List<T> switchTo = menus.get(activeMenu).chooseOption();
             if (switchTo != null && switchTo.get(0) == "switchMenu") {
                 activeMenu = (String) switchTo.get(1);
@@ -40,22 +39,17 @@ public class Shop {
     }
 
     private void printFilters() {
-        if(yearFilter != null || countryFilter != null) {
+        if(Menu.getYearFilter() != null || Menu.getCountryFilter() != null) {
             System.out.println("\n\n|-----------------------|");
         }
-        if (yearFilter != null) {
-            System.out.println("Active filter by year: " + yearFilter);
+        if (Menu.getYearFilter() != null) {
+            System.out.println("Active filter by year: " + Menu.getYearFilter());
         }
-        if (countryFilter != null) {
-            System.out.println("Active filter by country: " + countryFilter);
+        if (Menu.getCountryFilter() != null) {
+            System.out.println("Active filter by country: " + Menu.getCountryFilter());
         }
-        if(yearFilter != null || countryFilter != null) {
-            System.out.println("|-----------------------|\n\n");
+        if(Menu.getYearFilter() != null || Menu.getCountryFilter() != null) {
+            System.out.println("|-----------------------|");
         }
-    }
-
-    private void clearFilters() {
-        yearFilter = null;
-        countryFilter = null;
     }
 }

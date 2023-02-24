@@ -3,7 +3,6 @@ package shop.menus;
 import builder.Factory;
 import instruments.Instrument;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class MainMenu extends Menu {
@@ -54,7 +53,6 @@ public class MainMenu extends Menu {
                 String type = selecteType();
                 if (type != null) {
                     factory.createAndSaveInstrument(type);
-                    setInstruments(getAllInstruments());
                 }
                 return null;
             }
@@ -101,28 +99,7 @@ public class MainMenu extends Menu {
         for(Instrument ins: getAllInstruments()) {
             types.put(ins.getClass().getSimpleName(), types.getOrDefault(ins.getClass().getSimpleName(), 0) + 1);
         }
-        System.out.println(types);
         return types;
-    }
-
-    public List<Instrument> applyYearFilter(List<Instrument> instruments, Integer yearFilter) {
-        List<Instrument> filtered = new ArrayList<>();
-        for(Instrument ins: instruments) {
-            if(Objects.equals(ins.productionYear, yearFilter)) {
-                filtered.add(ins);
-            }
-        }
-        return filtered;
-    }
-
-    public List<Instrument> applyCountryFilter(List<Instrument> instruments, String countryFilter) {
-        List<Instrument> filtered = new ArrayList<>();
-        for(Instrument ins: instruments) {
-            if(Objects.equals(ins.productionCountry, countryFilter)) {
-                filtered.add(ins);
-            }
-        }
-        return filtered;
     }
 
     public List<Instrument> applyTypeFilter(String type) {

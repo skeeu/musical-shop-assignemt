@@ -3,6 +3,8 @@ package builder.keyboard;
 import builder.KeyboardInstrumentBuilder;
 import instruments.keyboard.acoustic.dynamic.Clavichord;
 
+import java.util.Scanner;
+
 public class ClavichordBuilder extends KeyboardInstrumentBuilder {
     private String title;
     private int productionYear;
@@ -15,53 +17,70 @@ public class ClavichordBuilder extends KeyboardInstrumentBuilder {
     private String shape;
     private boolean withTableLegs;
 
-    public ClavichordBuilder withTitle(String title) {
-        this.title = title;
+    private final Scanner sc;
+
+    public ClavichordBuilder(Scanner sc) {
+        this.sc = sc;
+    }
+
+
+    public ClavichordBuilder withTitle() {
+        System.out.println("Enter title: ");
+        this.title = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withProductionYear(int productionYear) {
-        this.productionYear = productionYear;
+    public ClavichordBuilder withProductionYear() {
+        System.out.println("Enter production year: ");
+        this.productionYear = sc.nextInt();
         return this;
     }
 
-    public ClavichordBuilder withProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
+    public ClavichordBuilder withProductionCountry() {
+        System.out.println("Enter production country: ");
+        this.productionCountry = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withColor(String color) {
-        this.color = color;
+    public ClavichordBuilder withColor() {
+        System.out.println("Enter color: ");
+        this.color = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withPrice(double price) {
-        this.price = price;
+    public ClavichordBuilder withPrice() {
+        System.out.println("Enter price: ");
+        this.price = sc.nextInt();
         return this;
     }
 
     public ClavichordBuilder withKeyMaterial(String keyMaterial) {
-        this.keyMaterial = keyMaterial;
+        System.out.println("Enter key material: ");
+        this.keyMaterial = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withSoundGenerationMethod(String soundGenerationMethod) {
-        this.soundGenerationMethod = soundGenerationMethod;
+    public ClavichordBuilder withSoundGenerationMethod() {
+        System.out.println("Enter sound generation method: ");
+        this.soundGenerationMethod = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withHammerMaterial(String hammerMaterial) {
-        this.hammerMaterial = hammerMaterial;
+    public ClavichordBuilder withHammerMaterial() {
+        System.out.println("Enter hammer material: ");
+        this.hammerMaterial = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withShape(String shape) {
-        this.shape = shape;
+    public ClavichordBuilder withShape() {
+        System.out.println("Enter shape: ");
+        this.shape = sc.next();
         return this;
     }
 
-    public ClavichordBuilder withTableLegs(boolean withTableLegs) {
-        this.withTableLegs = withTableLegs;
+    public ClavichordBuilder withTableLegs() {
+        System.out.println("Enter 1 if true: ");
+        this.withTableLegs = sc.nextInt() == 1;
         return this;
     }
 

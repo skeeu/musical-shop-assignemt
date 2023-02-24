@@ -3,6 +3,7 @@ package shop.menus;
 import database.InstrumentsDB;
 import instruments.Instrument;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,8 +15,7 @@ public class Menu {
 
     private static final InstrumentsDB db = new InstrumentsDB();
     private static final Map<String, Class> instrumentClasses = InstrumentsDB.instrumentClasses;
-    private static final List<Instrument> allInstruments = db.findAll();
-    private List<Instrument> instruments = allInstruments;
+    private List<Instrument> instruments = db.findAll();
     private int command;
 
     public Menu(String name, Scanner sc, List<String> options) {
@@ -25,7 +25,7 @@ public class Menu {
     }
 
     public static List<Instrument> getAllInstruments() {
-        return allInstruments;
+        return db.findAll();
     }
 
     public InstrumentsDB getDb() {

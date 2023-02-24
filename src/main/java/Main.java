@@ -18,24 +18,9 @@ public class Main {
     static Shop shop = Shop.getShop();
     static DatabaseHandler db = DatabaseHandler.getInstance();
     static InstrumentsDB idb = new InstrumentsDB();
-    public static void main(String[] args) throws IOException, ParseException {
-        Bayan b = new BayanBuilder()
-                .withTitle("TEST BUILDER")
-                .withColor("TEST")
-                .withPrice(200)
-                .withKeyMaterial("ASDASD")
-                .withProductionCountry("ASDASDASD")
-                .withProductionYear(12313)
-                .withAirPressureRequirements("12312312")
-                .withRowsNumber(123)
-                .withSoundGenerationMethod("12312312")
-                .withSoundProductionMethod("1231231")
-                .withSoundGenerationMethod("123123123").build();
-        System.out.println(b);
-        idb.saveInstrument(b);
-//        shop.startShop();
 
-//        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        shop.startShop();
 //        String username = sc.next();
 //        String password = sc.next();
 //        Session session = db.getSession().openSession();

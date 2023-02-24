@@ -3,6 +3,8 @@ package builder.keyboard;
 import builder.KeyboardInstrumentBuilder;
 import instruments.keyboard.acoustic.dynamic.Piano;
 
+import java.util.Scanner;
+
 public class PianoBuilder extends KeyboardInstrumentBuilder {
     private String title;
     private int productionYear;
@@ -15,53 +17,71 @@ public class PianoBuilder extends KeyboardInstrumentBuilder {
     private String shape;
     private double height;
 
-    public PianoBuilder withTitle(String title) {
-        this.title = title;
+    private final Scanner sc;
+
+    public PianoBuilder(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public PianoBuilder withTitle() {
+        System.out.println("Enter title: ");
+        System.out.println(123);
+        this.title = sc.next();
         return this;
     }
 
-    public PianoBuilder withProductionYear(int productionYear) {
-        this.productionYear = productionYear;
+    public PianoBuilder withProductionYear() {
+        System.out.println("Enter production year: ");
+        this.productionYear = sc.nextInt();
         return this;
     }
 
-    public PianoBuilder withProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
+    public PianoBuilder withProductionCountry() {
+        System.out.println("Enter production country: ");
+        this.productionCountry = sc.next();
         return this;
     }
 
-    public PianoBuilder withColor(String color) {
-        this.color = color;
+    public PianoBuilder withColor() {
+        System.out.println("Enter color: ");
+        System.out.println(12);
+        this.color = sc.next();
         return this;
     }
 
-    public PianoBuilder withPrice(double price) {
-        this.price = price;
+    public PianoBuilder withPrice() {
+        System.out.println("Enter price: ");
+        this.price = sc.nextInt();
         return this;
     }
 
-    public PianoBuilder withKeyMaterial(String keyMaterial) {
-        this.keyMaterial = keyMaterial;
+    public PianoBuilder withKeyMaterial() {
+        System.out.println("Enter key material: ");
+        this.keyMaterial = sc.next();
         return this;
     }
 
-    public PianoBuilder withSoundGenerationMethod(String soundGenerationMethod) {
-        this.soundGenerationMethod = soundGenerationMethod;
+    public PianoBuilder withSoundGenerationMethod() {
+        System.out.println("Enter sound generation method: ");
+        this.soundGenerationMethod = sc.next();
         return this;
     }
 
-    public PianoBuilder withHammerMaterial(String hammerMaterial) {
-        this.hammerMaterial = hammerMaterial;
+    public PianoBuilder withHammerMaterial() {
+        System.out.println("Enter hammer material: ");
+        this.hammerMaterial = sc.next();
         return this;
     }
 
-    public PianoBuilder withShape(String shape) {
-        this.shape = shape;
+    public PianoBuilder withShape() {
+        System.out.println("Enter shape: ");
+        this.shape = sc.next();
         return this;
     }
 
-    public PianoBuilder withHeight(double height) {
-        this.height = height;
+    public PianoBuilder withHeight() {
+        System.out.println("Enter height: ");
+        this.height = sc.nextInt();
         return this;
     }
 

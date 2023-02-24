@@ -3,6 +3,8 @@ package builder.keyboard;
 import builder.KeyboardInstrumentBuilder;
 import instruments.keyboard.acoustic.statik.reed.PumpOrgan;
 
+import java.util.Scanner;
+
 public class PumpOrganBuilder extends KeyboardInstrumentBuilder {
     private String title;
     private int productionYear;
@@ -14,48 +16,63 @@ public class PumpOrganBuilder extends KeyboardInstrumentBuilder {
     private String soundProductionMethod;
     private String airPressureRequirements;
 
-    public PumpOrganBuilder withTitle(String title) {
-        this.title = title;
+    private final Scanner sc;
+
+    public PumpOrganBuilder(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public PumpOrganBuilder withTitle() {
+        System.out.println("Enter title: ");
+        this.title = sc.next();
         return this;
     }
 
-    public PumpOrganBuilder withProductionYear(int productionYear) {
-        this.productionYear = productionYear;
+    public PumpOrganBuilder withProductionYear() {
+        System.out.println("Enter production year: ");
+        this.productionYear = sc.nextInt();
         return this;
     }
 
-    public PumpOrganBuilder withProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
+    public PumpOrganBuilder withProductionCountry() {
+        System.out.println("Enter production country: ");
+        this.productionCountry = sc.next();
         return this;
     }
 
-    public PumpOrganBuilder withColor(String color) {
-        this.color = color;
+    public PumpOrganBuilder withColor() {
+        System.out.println("Enter color: ");
+        this.color = sc.next();
         return this;
     }
 
-    public PumpOrganBuilder withPrice(double price) {
-        this.price = price;
+    public PumpOrganBuilder withPrice() {
+        System.out.println("Enter price: ");
+        this.price = sc.nextInt();
         return this;
     }
 
-    public PumpOrganBuilder withKeyMaterial(String keyMaterial) {
-        this.keyMaterial = keyMaterial;
+    public PumpOrganBuilder withKeyMaterial() {
+        System.out.println("Enter key material: ");
+        this.keyMaterial = sc.next();
         return this;
     }
 
-    public PumpOrganBuilder withSoundGenerationMethod(String soundGenerationMethod) {
-        this.soundGenerationMethod = soundGenerationMethod;
+    public PumpOrganBuilder withSoundGenerationMethod() {
+        System.out.println("Enter sound generation method: ");
+        this.soundGenerationMethod = sc.next();
         return this;
     }
 
-    public PumpOrganBuilder withSoundProductionMethod(String soundProductionMethod) {
-        this.soundProductionMethod = soundProductionMethod;
+    public PumpOrganBuilder withSoundProductionMethod() {
+        System.out.println("Enter sound production method: ");
+        this.soundProductionMethod = sc.next();
         return this;
     }
 
-    public PumpOrganBuilder withAirPressureRequirements(String airPressureRequirements) {
-        this.airPressureRequirements = airPressureRequirements;
+    public PumpOrganBuilder withAirPressureRequirements() {
+        System.out.println("Enter air pressure requirements: ");
+        this.airPressureRequirements = sc.next();
         return this;
     }
 

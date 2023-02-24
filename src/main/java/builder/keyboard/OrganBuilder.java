@@ -3,6 +3,8 @@ package builder.keyboard;
 import builder.KeyboardInstrumentBuilder;
 import instruments.keyboard.acoustic.statik.wind.Organ;
 
+import java.util.Scanner;
+
 public class OrganBuilder extends KeyboardInstrumentBuilder {
     private String title;
     private int productionYear;
@@ -15,53 +17,69 @@ public class OrganBuilder extends KeyboardInstrumentBuilder {
     private String airProductionMechanism;
     private String specialisation;
 
-    public OrganBuilder withTitle(String title) {
-        this.title = title;
+    private final Scanner sc;
+
+    public OrganBuilder(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public OrganBuilder withTitle() {
+        System.out.println("Enter title: ");
+        this.title = sc.next();
         return this;
     }
 
-    public OrganBuilder withProductionYear(int productionYear) {
-        this.productionYear = productionYear;
+    public OrganBuilder withProductionYear() {
+        System.out.println("Enter production year: ");
+        this.productionYear = sc.nextInt();
         return this;
     }
 
-    public OrganBuilder withProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
+    public OrganBuilder withProductionCountry() {
+        System.out.println("Enter production country: ");
+        this.productionCountry = sc.next();
         return this;
     }
 
-    public OrganBuilder withColor(String color) {
-        this.color = color;
+    public OrganBuilder withColor() {
+        System.out.println("Enter color: ");
+        this.color = sc.next();
         return this;
     }
 
-    public OrganBuilder withPrice(double price) {
-        this.price = price;
+    public OrganBuilder withPrice() {
+        System.out.println("Enter price: ");
+        this.price = sc.nextInt();
         return this;
     }
 
-    public OrganBuilder withKeyMaterial(String keyMaterial) {
-        this.keyMaterial = keyMaterial;
+    public OrganBuilder withKeyMaterial() {
+        System.out.println("Enter key material: ");
+        this.keyMaterial = sc.next();
         return this;
     }
 
-    public OrganBuilder withSoundGenerationMethod(String soundGenerationMethod) {
-        this.soundGenerationMethod = soundGenerationMethod;
+    public OrganBuilder withSoundGenerationMethod() {
+        System.out.println("Enter sound generation method: ");
+        this.soundGenerationMethod = sc.next();
         return this;
     }
 
-    public OrganBuilder withSoundProductionMethod(String soundProductionMethod) {
-        this.soundProductionMethod = soundProductionMethod;
+    public OrganBuilder withSoundProductionMethod() {
+        System.out.println("Enter sound production method: ");
+        this.soundProductionMethod = sc.next();
         return this;
     }
 
-    public OrganBuilder withAirProductionMechanism(String airProductionMechanism) {
-        this.airProductionMechanism = airProductionMechanism;
+    public OrganBuilder withAirProductionMechanism() {
+        System.out.println("Enter air production mechanism: ");
+        this.airProductionMechanism = sc.next();
         return this;
     }
 
-    public OrganBuilder withSpecialisation(String specialisation) {
-        this.specialisation = specialisation;
+    public OrganBuilder withSpecialisation() {
+        System.out.println("Enter specialisation: ");
+        this.specialisation = sc.next();
         return this;
     }
 

@@ -3,6 +3,8 @@ package builder.keyboard;
 import builder.KeyboardInstrumentBuilder;
 import instruments.keyboard.acoustic.statik.reed.Bayan;
 
+import java.util.Scanner;
+
 public class BayanBuilder extends KeyboardInstrumentBuilder {
     private String title;
     private int productionYear;
@@ -15,53 +17,69 @@ public class BayanBuilder extends KeyboardInstrumentBuilder {
     private String airPressureRequirements;
     private int rowsNumber;
 
-    public BayanBuilder withTitle(String title) {
-        this.title = title;
+    private final Scanner sc;
+
+    public BayanBuilder(Scanner sc){
+        this.sc = sc;
+    }
+
+    public BayanBuilder withTitle() {
+        System.out.println("Enter title: ");
+        this.title = sc.next();
         return this;
     }
 
-    public BayanBuilder withProductionYear(int productionYear) {
-        this.productionYear = productionYear;
+    public BayanBuilder withProductionYear() {
+        System.out.println("Enter Production Year: ");
+        this.productionYear = sc.nextInt();
         return this;
     }
 
-    public BayanBuilder withProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
+    public BayanBuilder withProductionCountry() {
+        System.out.println("Enter Production Country: ");
+        this.productionCountry = sc.next();
         return this;
     }
 
-    public BayanBuilder withColor(String color) {
-        this.color = color;
+    public BayanBuilder withColor() {
+        System.out.println("Enter Color: ");
+        this.color = sc.next();
         return this;
     }
 
-    public BayanBuilder withPrice(double price) {
-        this.price = price;
+    public BayanBuilder withPrice() {
+        System.out.println("Enter price: ");
+        this.price = sc.nextInt();
         return this;
     }
 
-    public BayanBuilder withKeyMaterial(String keyMaterial) {
-        this.keyMaterial = keyMaterial;
+    public BayanBuilder withKeyMaterial() {
+        System.out.println("Enter key material: ");
+        this.keyMaterial = sc.next();
         return this;
     }
 
-    public BayanBuilder withSoundGenerationMethod(String soundGenerationMethod) {
-        this.soundGenerationMethod = soundGenerationMethod;
+    public BayanBuilder withSoundGenerationMethod() {
+        System.out.println("Enter sound generation method: ");
+        this.soundGenerationMethod = sc.next();
         return this;
     }
 
-    public BayanBuilder withSoundProductionMethod(String soundProductionMethod) {
-        this.soundProductionMethod = soundProductionMethod;
+    public BayanBuilder withSoundProductionMethod() {
+        System.out.println("Enter sound production method: ");
+        this.soundProductionMethod = sc.next();
         return this;
     }
 
-    public BayanBuilder withAirPressureRequirements(String airPressureRequirements) {
-        this.airPressureRequirements = airPressureRequirements;
+    public BayanBuilder withAirPressureRequirements() {
+        System.out.println("Enter air pressure requirements: ");
+        this.airPressureRequirements = sc.next();
         return this;
     }
 
-    public BayanBuilder withRowsNumber(int rowsNumber) {
-        this.rowsNumber = rowsNumber;
+    public BayanBuilder withRowsNumber() {
+        System.out.println("Enter rows number: ");
+        this.rowsNumber = sc.nextInt();
         return this;
     }
 
@@ -70,5 +88,4 @@ public class BayanBuilder extends KeyboardInstrumentBuilder {
                 keyMaterial, soundGenerationMethod, soundProductionMethod, airPressureRequirements, rowsNumber);
         return bayan;
     }
-
 }

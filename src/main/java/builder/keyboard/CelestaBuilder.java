@@ -2,6 +2,7 @@ package builder.keyboard;
 
 import builder.KeyboardInstrumentBuilder;
 import instruments.keyboard.acoustic.dynamic.Celesta;
+import java.util.Scanner;
 
 public class CelestaBuilder extends KeyboardInstrumentBuilder {
     private String title;
@@ -15,53 +16,69 @@ public class CelestaBuilder extends KeyboardInstrumentBuilder {
     private String shape;
     private String octaveType;
 
-    public CelestaBuilder withTitle(String title) {
-        this.title = title;
+    private final Scanner sc;
+
+    public CelestaBuilder(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public CelestaBuilder withTitle() {
+        System.out.println("Enter title: ");
+        this.title = sc.next();
         return this;
     }
 
-    public CelestaBuilder withProductionYear(int productionYear) {
-        this.productionYear = productionYear;
+    public CelestaBuilder withProductionYear() {
+        System.out.println("Enter Production Year: ");
+        this.productionYear = sc.nextInt();
         return this;
     }
 
-    public CelestaBuilder withProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
+    public CelestaBuilder withProductionCountry() {
+        System.out.println("Enter Production Country: ");
+        this.productionCountry = sc.next();
         return this;
     }
 
-    public CelestaBuilder withColor(String color) {
-        this.color = color;
+    public CelestaBuilder withColor() {
+        System.out.println("Enter Color: ");
+        this.color = sc.next();
         return this;
     }
 
-    public CelestaBuilder withPrice(double price) {
-        this.price = price;
+    public CelestaBuilder withPrice() {
+        System.out.println("Enter price: ");
+        this.price = sc.nextDouble();
         return this;
     }
 
-    public CelestaBuilder withKeyMaterial(String keyMaterial) {
-        this.keyMaterial = keyMaterial;
+    public CelestaBuilder withKeyMaterial() {
+        System.out.println("Enter key material: ");
+        this.keyMaterial = sc.next();
         return this;
     }
 
-    public CelestaBuilder withSoundGenerationMethod(String soundGenerationMethod) {
-        this.soundGenerationMethod = soundGenerationMethod;
+    public CelestaBuilder withSoundGenerationMethod() {
+        System.out.println("Enter sound generation method: ");
+        this.soundGenerationMethod = sc.next();
         return this;
     }
 
-    public CelestaBuilder withHammerMaterial(String hammerMaterial) {
-        this.hammerMaterial = hammerMaterial;
+    public CelestaBuilder withHammerMaterial() {
+        System.out.println("Enter hammer material: ");
+        this.hammerMaterial = sc.next();
         return this;
     }
 
-    public CelestaBuilder withShape(String shape) {
-        this.shape = shape;
+    public CelestaBuilder withShape() {
+        System.out.println("Enter shape: ");
+        this.shape = sc.next();
         return this;
     }
 
-    public CelestaBuilder withOctaveType(String octaveType) {
-        this.octaveType = octaveType;
+    public CelestaBuilder withOctaveType() {
+        System.out.println("Enter octave type: ");
+        this.octaveType = sc.next();
         return this;
     }
 
@@ -69,5 +86,4 @@ public class CelestaBuilder extends KeyboardInstrumentBuilder {
         Celesta celesta = new Celesta(title, productionYear, productionCountry, color, price, keyMaterial, soundGenerationMethod, hammerMaterial, shape, octaveType);
         return celesta;
     }
-
 }
